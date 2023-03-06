@@ -348,4 +348,3 @@ else
     updateItemTable()
     runfunction(arg)
 end
-
