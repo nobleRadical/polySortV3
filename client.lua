@@ -146,9 +146,9 @@ function runfunction(command)
             count=nil,
             name=nil
         }
-        local itemName = command[2]
+        local itemName = command[3]
         if not itemName then
-            printError("Usage: request <name> <count>")
+            printError("Usage: request <count> <name>")
             return 1
         end
         --correction from item_name to minecraft:item_name
@@ -165,10 +165,10 @@ function runfunction(command)
             printError("No item with that name found.")
             return
         end
-        local itemCount = tonumber(command[3])
+        local itemCount = tonumber(command[2])
         if itemCount == nil then
-            print("No item count supplied, defaulting to 1 stack.")
-            itemCount = itemTable[message.name].maxCount
+            printError("Usage: request <count> <name>")
+            return 1
         end
         message.count = itemCount
         rednet.send(hostComputer, message, host_protocol)
